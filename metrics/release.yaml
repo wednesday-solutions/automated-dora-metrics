@@ -1,0 +1,25 @@
+releases:
+  - number: 1
+    date: 23-08-2023 10:45 AM
+    features: 31
+    bugs: 18
+    hotfixes: 19
+    is_hotfix: false
+  - number: 2
+    date: 23-08-2023 10:54 AM
+    features: 2
+    bugs: 1
+    hotfixes: 1
+    is_hotfix: false
+  - number: 3
+    date: 23-08-2023 11:12 AM
+    features: 0
+    bugs: 0
+    hotfixes: 1
+    is_hotfix: true
+  - number: 4
+    date: 23-08-2023 11:52 AM
+    features: 0
+    bugs: 0
+    hotfixes: 0
+    is_hotfix: false

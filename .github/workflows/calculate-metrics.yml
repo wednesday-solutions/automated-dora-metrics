@@ -1,0 +1,59 @@
+name: Calculate Metrics CI
+
+on:
+  workflow_run:
+    workflows: ["Docker build and push"]
+    types:
+      - completed
+# on:
+#   push:
+#     branches:
+#       - main
+
+jobs:
+  calculate-metrics:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: 🛠️ Checkout code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: 🛠️ Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: ⬇️ Pull Docker image
+        run: docker pull abhimishraa/dorametrics:latest
+
+      - name: ➕ Generate metrics
+        run: docker run --rm -v "$(pwd)/metrics":/app/metrics -v "$(pwd)/.git":/app/.git abhimishraa/dorametrics:latest --calculate-metrics
+
+      - name: 🔎 Fetch secrets
+        env:
+          COMPASS_USER_EMAIL: ${{ secrets.COMPASS_USER_EMAIL }}
+          COMPASS_USER_API_KEY: ${{ secrets.COMPASS_USER_API_KEY }}
+          COMPASS_METRICS_BASE_URL: ${{ secrets.COMPASS_METRICS_BASE_URL }}
+        run: |
+          echo "COMPASS_USER_EMAIL=$COMPASS_USER_EMAIL" >> $GITHUB_ENV
+          echo "COMPASS_USER_API_KEY=$COMPASS_USER_API_KEY" >> $GITHUB_ENV
+          echo "COMPASS_METRICS_BASE_URL=$COMPASS_METRICS_BASE_URL" >> $GITHUB_ENV
+
+      - name: 📣 Notify Compass
+        run: |
+          docker run --rm -v "$(pwd)/metrics":/app/metrics -e COMPASS_USER_EMAIL=$COMPASS_USER_EMAIL -e COMPASS_USER_API_KEY=$COMPASS_USER_API_KEY -e COMPASS_METRICS_BASE_URL=$COMPASS_METRICS_BASE_URL abhimishraa/dorametrics:latest --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
+
+      - name: 💻 Commit files
+        run: |
+          git config --local user.email "git@wednesday.is"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "chore: updated metrics insights [skip ci]"
+
+      - name: 🚀 Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
