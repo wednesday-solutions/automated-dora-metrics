@@ -1,4 +1,4 @@
-## DORA Metrics & Jira Compass Automation 🚀
+## Automated Delivery Metrics 🚀
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
