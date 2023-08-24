@@ -7,11 +7,11 @@
 
 ---
 
-### We have a detailed usage guide [here]()
+#### We have a detailed usage guide [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)
 
-### If you just want to get straight into commands, here's how :-
+#### For getting straight into commands, here's how :-
 
-#### ➕ Generate metrics for recent release
+- ➕ Generate metrics for recent release
 
 ```
 docker run --rm
@@ -23,9 +23,9 @@ abhimishraa/dorametrics:latest --calculate-metrics
 <!-- must be used without -e flag -->
 ```
 
-#### ➕ Generate metrics for your previous releases / pre-existing repository
+- ➕ Generate metrics for your previous releases / pre-existing repository
 
-_Considering your repository had followed strict git flow as stated [here]()_
+_Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)_
 
 ```
 docker run --rm
@@ -37,13 +37,13 @@ abhimishraa/dorametrics:latest --calculate-metrics -e True
 
 ```
 
-#### If your parent / production branch is not `main`, specify it manually :-
+- If your parent / production branch is not `main`, specify it manually :-
 
 ```
 docker run --rm -v $(pwd)/metrics:/app/metrics abhimishraa/dorametrics:latest --calculate-metrics -p <branch-name>
 ```
 
-#### 📣 To notify Jira Compass with the generated metrics:
+- 📣 To notify Jira Compass with the generated metrics:
 
 ```
 docker run --rm \
@@ -54,54 +54,21 @@ docker run --rm \
     --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
 ```
 
-#### For getting help from the metrics tool :-
+- For getting help from the metrics tool :-
 
 ```
 docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
 ```
 
-- For more, please see our detailed usage and understanding concepts, refer our detailed [documentation]().
+- For more, please see our detailed usage and understanding concepts, refer our detailed [documentation](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage).
 
 ---
-
-#### Generally the deployment ci pipeline should run the metrics calculation command
-
-_Note_ 🛑:- Please check the section for [creating a branch and pull request](https://github.com/abhishek-ws/dora-metrics-poc#-creating-a-pull-request---) that we strictly follow as the tool relies on the proper naming conventions of branches in order to generate correct metrics. Any ambigious branch names will be automatically ignored by the automation tool and will affect the metrics generation and calculation.
-
-#### To notify Jira Compass with the generated metrics:
-
-```
-docker run --rm \
-    -e COMPASS_USER_EMAIL=$COMPASS_USER_EMAIL \
-    -e COMPASS_USER_API_KEY=$COMPASS_USER_API_KEY \
-    -e COMPASS_METRICS_BASE_URL=$COMPASS_METRICS_BASE_URL \
-    -v $(pwd):/app abhimishraa/dorametrics:latest \
-    --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
-```
-
-This command will notify Jira Compass with the metrics generated using the specified YAML files.
-_Note_ :-
-
-- metrics/data.yaml is the output generated from previous `calculate-metrics` command
-- ensure to provide necessary credentials to accesss your Jira compass such as email, api key, base url, etc.
 
 #### Structure of target-metrics.yaml
 
 The target-metrics.yaml file defines the metrics you want to calculate and track. Customize the metrics and their associated IDs according to your project's needs.
 
-The structure should be similar to what we have [here](https://github.com/abhishek-ws/dora-metrics-poc/blob/main/metrics/target-metrics.yaml)
-
-#### If your parent / production branch is not `main`, specify it manually :-
-
-```
-docker run --rm -v $(pwd)/metrics:/app/metrics abhimishraa/dorametrics:latest --calculate-metrics -p <branch-name>
-```
-
-#### For getting help from automation script :-
-
-```
-docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
-```
+The structure should be similar to what we have [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/target-metrics)
 
 ### 🛑 Creating a Pull request 🛑 :-
 

@@ -3,7 +3,7 @@
 - Ensure you have a valid [component](https://developer.atlassian.com/cloud/compass/components/what-is-a-component/) created in the compass dashboard.
   _You can follow [this](https://developer.atlassian.com/cloud/compass/components/create-view-update-and-delete-components/) guide get started with compass and components_
 
-- Once your component is available, you can create metrics that correspond to the names of the desrired metrics from the `data.yaml` listed [here]() that you would like to push to your compass component. _[Guide](https://developer.atlassian.com/cloud/compass/components/create-connect-and-view-component-metrics/) for compass metrics_
+- Once your component is available, you can create metrics that correspond to the names of the desrired metrics from the `data.yaml` `listed two points` below that you would like to push to your compass component. _[Guide](https://developer.atlassian.com/cloud/compass/components/create-connect-and-view-component-metrics/) for compass metrics_
 - Once you have created the custom metrics and attached to your component, you can view the curl command that will carry the unique identifiers of the metrics available in the component's dashboard.
 - ## We would like to have the following identities from the CURL of the respective metric :-
 - Breakdown of CURL available in the components metrics UI
@@ -16,7 +16,7 @@
 --data "{\"metricSourceId\": \"$COMMON_METRICS_ID/$METRIC_ID\", \"value\": "$metric_value", \"timestamp\": \"$TIMESTAMP\"}" `
   - We need to retrieve the following identities mentioned in the form of variables in the above sample CURL structure
     :-
-    - Compass_Metrics_Base_URL :- Usage mentioned [here](). (Common across all the metrics available for your component)
+    - Compass_Metrics_Base_URL :- Usage mentioned [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage). (Common across all the metrics available for your component)
     - COMMON_METRICS_ID :- For `target-metrics.yaml` (Common across all the metrics available for your component)
     - METRIC_ID :- For `target-metrics.yaml` (Unique identifier for each metric available for your component)
 
@@ -51,4 +51,4 @@ target_metrics:
 
   **🛑 Note :- the target metrics should only contain the keys with the name exactly corresponding of the metrics' keys available in the `data.yaml`**
 
-- Once the target metrics file has been created, we can inject it into the usage mentioned [here]()
+- Once the target metrics file has been created, we can inject it into the usage mentioned [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)

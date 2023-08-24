@@ -11,7 +11,7 @@ docker pull abhimishraa/dorametrics:latest
 ```
 
 - ➕ Generate the metrics for a pre-existing git repository / project
-  _Considering your repository had followed strict git flow as stated [here]()_
+  _Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/breakdown)_
 
 ```
 docker run --rm
@@ -29,7 +29,7 @@ docker run --rm
 abhimishraa/dorametrics:latest --calculate-metrics
 ```
 
-**Please refer the breakdown of both output files that got generated during the above process [here]()**
+**Please refer the breakdown of both output files that got generated during the above process [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/breakdown)**
 
 - 📣 To notify Jira Compass with after the metrics are generated
 
@@ -47,7 +47,7 @@ The `--notify-compass` command takes two arguments :-
 2. Target :- The location of the names and identities of the metrics that needs to go into Jira compass `target-merics.yaml` file that needs to be present before running the command.
    Please refer [this]() documentation for more information about how to populate the `target-merics.yaml` file
 
-**The need for attaching volume** :-
+**The need for attaching volumes** :-
 
 ##### 1 /metrics
 
@@ -60,6 +60,13 @@ The `--notify-compass` command takes two arguments :-
 
 - As stated earlier, the tool calculates the metrics based on git history of the host repository
 - Since the container is an isolated environment, in order to get access to the logs of the host, we need to mount the /.git directory from the host into the container.
+
+###### Ideally the deployment ci pipeline should run the metrics calculation and notification commands
+
+_🛑 Important Note_ :-
+
+- Please check the section for [creating a branch and pull request](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme#-creating-a-pull-request---) that we strictly follow as the tool relies on the proper naming conventions of branches in order to generate correct metrics.
+- Any ambigious branch names will be automatically ignored by the automation tool and will affect the metrics generation and calculation.
 
 #### 2. Using the repository source code itself
 
