@@ -113,7 +113,7 @@ The structure should be similar to what we have [here](https://github.com/wednes
 - For example :-
 
 ```
- `feature/<PROJ>-1`
+ `feat/<PROJ>-1`
  `chore/<PROJ>-6`
  `docs/<PROJ>-7`
  `bug/<PROJ>-2`
