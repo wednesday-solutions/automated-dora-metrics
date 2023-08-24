@@ -2,25 +2,16 @@
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
-- Once the metrics are generated, you can seamlessly push them to 📣 [Jira Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly.
+- Once the metrics are generated, you can seamlessly push them to 📣 [Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly by following our instructions.
+- We have hosted a docker image [here](https://hub.docker.com/repository/docker/abhimishraa/dorametrics/general)
 
-### Files Created by the Tool :-
+---
 
-##### 1 data.yaml
+#### We have a detailed usage guide [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)
 
-- This file holds a wealth of information, including CFR metrics, averages, and detailed insights about recent releases. If you're integrating this tool into an existing Git repository, data.yaml becomes your go-to resource for metrics analysis.
+#### For getting straight into commands, here's how :-
 
-##### 2 release.yaml
-
-- The release.yaml file presents a chronological list of your project's releases.
-
-#### 🐳 Using the Docker Image
-
-You can use the Docker image [abhimishraa/dorametrics:latest](https://hub.docker.com/u/abhimishraa) to run the automation and interact with Jira Compass. Here's how:
-
-### ➕ Generate Metrics
-
-- Generate metrics for recent release
+- ➕ Generate metrics for recent release
 
 ```
 docker run --rm
@@ -29,52 +20,30 @@ docker run --rm
 -v "$(pwd)/.git":/app/.git
  <!-- attach .git dir of the container host -->
 abhimishraa/dorametrics:latest --calculate-metrics
-  <!-- -e flag is optional, default False -->
+<!-- must be used without -e flag -->
 ```
 
-_The need for attaching volume_ :-
+- ➕ Generate metrics for your previous releases / pre-existing repository
 
-##### 1 /metrics
-
-- The tool inside the container will calculate the metrics based on git history of the host repository
-- Once the metrics are generated, it will create two `yaml` files `data.yaml`, `release.yaml` inside the `metrics/` directory of the container
-- In order to get access to those metrics, we need to mount the host's /metrics directory to the container.
-
-##### 2 /.git
-
-- As stated earlier, the tool calculates the metrics based on git history of the host repository
-- Since the container is an isolated environment, in order to get access to the logs of the host, we need to mount the /.git directory from the host into the container.
+_Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)_
 
 ```
 docker run --rm
 -v "$(pwd)/metrics":/app/metrics
+ <!-- attach metrics dir of container host as an output dir -->
 -v "$(pwd)/.git":/app/.git
+ <!-- attach .git dir of the container host -->
 abhimishraa/dorametrics:latest --calculate-metrics -e True
-  <!-- -e flag is optional, default False -->
-```
-
-- If you are importing this tool to an existing git repository and the parent/production branch is not main (default)
 
 ```
-docker run --rm \
-  -v "$(pwd)/metrics":/app/metrics \
-  -v "$(pwd)/.git":/app/.git \
-  abhimishraa/dorametrics:latest \
-  --calculate-metrics -e True -p <branch-name>
-  <!-- -e, -p are optional -->
+
+- If your parent / production branch is not `main`, specify it manually :-
+
+```
+docker run --rm -v $(pwd)/metrics:/app/metrics abhimishraa/dorametrics:latest --calculate-metrics -p <branch-name>
 ```
 
-#### Generally the deployment ci pipeline should run the metrics calculation command
-
-_Note_ 🛑:- Please check the section for [creating a branch and pull request](https://github.com/abhishek-ws/dora-metrics-poc#-creating-a-pull-request---) that we strictly follow as the tool relies on the proper naming conventions of branches in order to generate correct metrics. Any ambigious branch names will be automatically ignored by the automation tool and will affect the metrics generation and calculation.
-
-This will generate two different metric files inside a folder called `metrics` (it should be created on the fly if the folder does not exists)
-
-- data.yaml :- contains summary of previous releases, features, bugs, hotfixes, average for each along with cfr metrics
-
-- release.yaml :- the file will be updated with the latest release and the release details such as features, bugs, hotfix, date, etc sequentially in a list format for every release you run, considering you integrate the `calculate-metrics` flow into your release cd pipeline
-
-#### To notify Jira Compass with the generated metrics:
+- 📣 To notify Jira Compass with the generated metrics:
 
 ```
 docker run --rm \
@@ -85,29 +54,21 @@ docker run --rm \
     --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
 ```
 
-This command will notify Jira Compass with the metrics generated using the specified YAML files.
-_Note_ :-
+- For getting help from the metrics tool :-
 
-- metrics/data.yaml is the output generated from previous `calculate-metrics` command
-- ensure to provide necessary credentials to accesss your Jira compass such as email, api key, base url, etc.
+```
+docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
+```
+
+- For more, please see our detailed usage and understanding concepts, refer our detailed [documentation](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage).
+
+---
 
 #### Structure of target-metrics.yaml
 
 The target-metrics.yaml file defines the metrics you want to calculate and track. Customize the metrics and their associated IDs according to your project's needs.
 
-The structure should be similar to what we have [here](https://github.com/abhishek-ws/dora-metrics-poc/blob/main/metrics/target-metrics.yaml)
-
-#### If your parent / production branch is not `main`, specify it manually :-
-
-```
-docker run --rm -v $(pwd)/metrics:/app/metrics abhimishraa/dorametrics:latest --calculate-metrics -p <branch-name>
-```
-
-#### For getting help from automation script :-
-
-```
-docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
-```
+The structure should be similar to what we have [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/target-metrics)
 
 ### 🛑 Creating a Pull request 🛑 :-
 
