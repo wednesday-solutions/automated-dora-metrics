@@ -2,7 +2,7 @@
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
-- Once the metrics are generated, you can seamlessly push them to 📣 [Jira Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly by following our instructions.
+- Once the metrics are generated, you can seamlessly push them to 📣 [Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly by following our instructions.
 - We have hosted a docker image [here](https://hub.docker.com/repository/docker/abhimishraa/dorametrics/general)
 
 ---
