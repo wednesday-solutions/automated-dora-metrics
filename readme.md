@@ -67,6 +67,8 @@ docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
 
 ---
 
+#### Sample CI Pipeline to integrate into your production release workflow can be found [here](https://github.com/wednesday-solutions/automated-delivery-metrics/blob/main/.github/workflows/calculate-metrics.yml)
+
 #### Structure of target-metrics.yaml
 
 The target-metrics.yaml file defines the metrics you want to calculate and track. Customize the metrics and their associated IDs according to your project's needs.
