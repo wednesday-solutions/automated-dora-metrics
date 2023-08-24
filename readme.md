@@ -7,7 +7,10 @@
 
 ---
 
-#### We have a detailed usage guide [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)
+### Getting started
+
+- [Detailed usage guide](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/usage)
+- [Quick usage summary](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main#for-getting-straight-into-commands-heres-how--)
 
 #### For getting straight into commands, here's how :-
 
@@ -25,7 +28,7 @@ abhimishraa/dorametrics:latest --calculate-metrics
 
 - ➕ Generate metrics for your previous releases / pre-existing repository
 
-_Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage)_
+_Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main#for-getting-straight-into-commands-heres-how--)_
 
 ```
 docker run --rm
@@ -60,7 +63,7 @@ docker run --rm \
 docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
 ```
 
-- For more, please see our detailed usage and understanding concepts, refer our detailed [documentation](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/usage).
+- For more, please check out our detailed [documentation](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/usage) to understand in depth concepts.
 
 ---
 
@@ -68,7 +71,7 @@ docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
 
 The target-metrics.yaml file defines the metrics you want to calculate and track. Customize the metrics and their associated IDs according to your project's needs.
 
-The structure should be similar to what we have [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/target-metrics)
+The structure should be similar to what we have [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/target-metrics)
 
 ### 🛑 Creating a Pull request 🛑 :-
 

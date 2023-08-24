@@ -23,18 +23,16 @@ TNOFe = TOTAL_NUMBER_OF_FEATURES // previous total features + current features
 TRWB = TOTAL_RELEASES_WITHOUT_BUGS
 TNOHR = TOTAL_NUMBER_OF_HOTFIX_RELEASES
 
----
+#### Formulas used to calculate Change Failure Rates for different metric ratios
 
-#### Formulas
-
-CFR*HOTFIX_TO_TOTAL = (TNOHR / TR * 100)
-CFR*BUG_TO_TASKS_RATIO = CFR_BUG_TO_TASKS_RATIO * TR + ((TBOBP / TTDINPR) _ 100) / TR + 1
-CFR_BUG_TO_FEATURE = CFR_BUG_TO_FEATURE _ TR + (TNOF / TNOFe) \* 100) / TR + 1
-CFR_BUG_RELEASE_RATIO = TRWB / TR
+- CFR*HOTFIX_TO_TOTAL = (TNOHR / TR * 100)
+- CFR*BUG_TO_TASKS_RATIO = CFR_BUG_TO_TASKS_RATIO * TR + ((TBOBP / TTDINPR) \_ 100) / TR + 1
+- CFR*BUG_TO_FEATURE = CFR_BUG_TO_FEATURE * TR + (TNOF / TNOFe) \* 100) / TR + 1
+- CFR_BUG_RELEASE_RATIO = TRWB / TR
 
 ---
 
-- Breakdown of sample `data.yaml` :-
+- Breakdown of `data.yaml` :-
   _please refer to the variables stated above to understand the structure_
 
 ```
@@ -60,7 +58,7 @@ last_release:
 
 ```
 
-- Breakdown of sample `releases.yaml` :-
+- Breakdown of `releases.yaml` :-
 
 ```
 releases:
@@ -92,11 +90,11 @@ releases:
 
 ```
 
-- Sample `releases.yaml` _when calculated to existing repository (-e True flag)_ :-
+- Sample `releases.yaml` generated for the first time _when calculated to existing repository (-e True flag)_ :-
 
 ```
 releases:
-  - number: 1
+  - number: 1 # even though your total_releases will have the exact number of releases, we will consder this release number as 1 to avoid confusions
     date: 23-08-2023 10:45 AM # the time at which the metrics was calculated
     features: 31  # total number of features that are present in the base branch
     bugs: 18 # total number of bugfixes that went into the base branch
