@@ -11,7 +11,7 @@ docker pull abhimishraa/dorametrics:latest
 ```
 
 - ➕ Generate the metrics for a pre-existing git repository / project
-  _Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/breakdown)_
+  _Considering your repository had followed strict git flow as stated [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme#-creating-a-pull-request---)_
 
 ```
 docker run --rm
@@ -29,7 +29,7 @@ docker run --rm
 abhimishraa/dorametrics:latest --calculate-metrics
 ```
 
-**Please refer the breakdown of both output files that got generated during the above process [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/docs/update-readme/guide/breakdown)**
+**Please refer the breakdown of both output files that got generated during the above process [here](https://github.com/wednesday-solutions/automated-delivery-metrics/blob/main/guide/output-breakdown/Readme.md)**
 
 - 📣 To notify Jira Compass with after the metrics are generated
 
@@ -45,7 +45,7 @@ The `--notify-compass` command takes two arguments :-
 
 1. Source :- The location of the metrics `data.yaml` file that just got generated using --calculate-metrics command earlier.
 2. Target :- The location of the names and identities of the metrics that needs to go into Jira compass `target-merics.yaml` file that needs to be present before running the command.
-   Please refer [this]() documentation for more information about how to populate the `target-merics.yaml` file
+   Please refer [this](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/target-metrics) documentation for more information about how to populate the `target-merics.yaml` file
 
 **The need for attaching volumes** :-
 

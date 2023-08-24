@@ -51,4 +51,4 @@ target_metrics:
 
   **🛑 Note :- the target metrics should only contain the keys with the name exactly corresponding of the metrics' keys available in the `data.yaml`**
 
-- Once the target metrics file has been created, we can inject it into the usage mentioned [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/usagee)
+- Once the target metrics file has been created, we can inject it into the usage mentioned [here](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/usage)
