@@ -26,11 +26,11 @@ A tool to provide the ability to generate automated metrics for your every relea
     </a>
   </div>
 
----
-
 <span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring">We are hiring!</a></span>
 
 </div>
+
+---
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
