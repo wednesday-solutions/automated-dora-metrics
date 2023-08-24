@@ -25,6 +25,7 @@ CFR_BUG_RELEASE_RATIO = TRWB / TR
 ---
 
 - Breakdown of sample `data.yaml` :-
+  _please refer to the variables stated above to understand the structure_
 
 ```
 total_releases: # TR
