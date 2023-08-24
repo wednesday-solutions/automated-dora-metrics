@@ -2,13 +2,98 @@
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
-- Once the metrics are generated, you can seamlessly push them to 📣 [Jira Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly.
+- Once the metrics are generated, you can seamlessly push them to 📣 [Jira Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly by following our instructions.
+- We have hosted a docker image [here](https://hub.docker.com/repository/docker/abhimishraa/dorametrics/general)
+
+---
+
+### We have a detailed usage guide [here]()
+
+### If you just want to get straight into commands, here's how :-
+
+#### ➕ Generate metrics for recent release
+
+```
+docker run --rm
+-v "$(pwd)/metrics":/app/metrics
+ <!-- attach metrics dir of container host as an output dir -->
+-v "$(pwd)/.git":/app/.git
+ <!-- attach .git dir of the container host -->
+abhimishraa/dorametrics:latest --calculate-metrics
+<!-- must be used without -e flag -->
+```
+
+#### ➕ Generate metrics for your previous releases / pre-existing repository
+
+_Considering your repository had followed strict git flow as stated [here]()_
+
+```
+docker run --rm
+-v "$(pwd)/metrics":/app/metrics
+ <!-- attach metrics dir of container host as an output dir -->
+-v "$(pwd)/.git":/app/.git
+ <!-- attach .git dir of the container host -->
+abhimishraa/dorametrics:latest --calculate-metrics -e True
+
+```
+
+#### If your parent / production branch is not `main`, specify it manually :-
+
+```
+docker run --rm -v $(pwd)/metrics:/app/metrics abhimishraa/dorametrics:latest --calculate-metrics -p <branch-name>
+```
+
+#### 📣 To notify Jira Compass with the generated metrics:
+
+```
+docker run --rm \
+    -e COMPASS_USER_EMAIL=$COMPASS_USER_EMAIL \
+    -e COMPASS_USER_API_KEY=$COMPASS_USER_API_KEY \
+    -e COMPASS_METRICS_BASE_URL=$COMPASS_METRICS_BASE_URL \
+    -v $(pwd):/app abhimishraa/dorametrics:latest \
+    --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
+```
+
+#### For getting help from the metrics tool :-
+
+```
+docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
+```
+
+- For more, please see our detailed usage and understanding concepts, refer our detailed [documentation]().
+
+---
 
 ### Files Created by the Tool :-
 
 ##### 1 data.yaml
 
 - This file holds a wealth of information, including CFR metrics, averages, and detailed insights about recent releases. If you're integrating this tool into an existing Git repository, data.yaml becomes your go-to resource for metrics analysis.
+
+- Sample `data.yml` :-
+
+```
+total_releases: # number of release done to your production branch
+total_feature_releases: # number of features that went into your production branch
+total_bugfix_releases: # number of bugfixes that went into your production branch
+total_hotfix_releases: # number of hotfixes that went into your production branch
+total_releases_without_bugs: # releases that didn't carried any bugfixes with them
+average_features_per_release: # total features/release
+average_bugs_per_release: # total bugs/total release
+average_hotfixes_per_release: # total hotfixes/total release
+cfr_hotfix_to_release: 24.14 %
+cfr_bugs_to_tasks_ratio: 2.0 %
+cfr_bug_to_feature: 5.04 %
+cfr_bug_release_ratio: 97.7 %
+last_release:
+  date: 23-08-2023 11:52 AM
+  total_tickets: 0
+  features: 0
+  bugs: 0
+  hotfixes: 0
+  is_hotfix: false
+
+```
 
 ##### 2 release.yaml
 
