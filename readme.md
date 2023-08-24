@@ -1,4 +1,36 @@
-## Automated Delivery Metrics 🚀
+<div>
+  
+  <p>
+    <h1 align="left">Automated Delivery Metrics
+    </h1>
+  </p>
+
+  <p>
+A tool to provide the ability to generate automated metrics for your every releases.
+  </p>
+
+---
+
+  <p>
+    <h4>
+      Expert teams of digital product strategists, developers, and designers.
+    </h4>
+  </p>
+
+  <div>
+    <a href="https://www.wednesday.is/contact-us?utm_source=gthb&utm_medium=repo&utm_campaign=serverless" target="_blank">
+      <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88b9005f9ed382fb2a5_button_get_in_touch.svg" width="121" height="34">
+    </a>
+    <a href="https://github.com/wednesday-solutions/" target="_blank">
+      <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88bb1958c3253756c39_button_follow_on_github.svg" width="168" height="34">
+    </a>
+  </div>
+
+---
+
+<span>We’re always looking for people who value their work, so come and join us. <a href="https://www.wednesday.is/hiring">We are hiring!</a></span>
+
+</div>
 
 - This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
