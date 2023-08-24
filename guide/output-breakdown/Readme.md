@@ -1,4 +1,14 @@
-### Examples
+### Breakdown
+
+The `--calculate-metrics` command will yield/update two files inside the folder called `metrics` (it should be created on the fly if the folder does not exists)
+
+- data.yaml :-
+
+  - This file holds a wealth of information, including CFR metrics, averages, and detailed insights about recent releases.
+  - If you're integrating this tool into an existing Git repository, data.yaml becomes your go-to resource for metrics analysis.
+
+- release.yaml :-
+  - The file will be updated with the latest release and the release details such as features, bugs, hotfix, date, etc sequentially in a list format for every release you run, considering you integrate the `calculate-metrics` flow into your release cd pipeline
 
 #### Variables
 
@@ -82,7 +92,7 @@ releases:
 
 ```
 
-- Sample `releases.yaml` _when calcualted to existing repository_ with git history _(-e True flag)_ :-
+- Sample `releases.yaml` _when calculated to existing repository (-e True flag)_ :-
 
 ```
 releases:

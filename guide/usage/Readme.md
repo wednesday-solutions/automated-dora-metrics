@@ -29,7 +29,7 @@ docker run --rm
 abhimishraa/dorametrics:latest --calculate-metrics
 ```
 
-**Please refer the breakdown of both the files that got generated during the above process [here]()**
+**Please refer the breakdown of both output files that got generated during the above process [here]()**
 
 - 📣 To notify Jira Compass with after the metrics are generated
 

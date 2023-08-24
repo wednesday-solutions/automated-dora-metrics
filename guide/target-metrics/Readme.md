@@ -50,3 +50,5 @@ target_metrics:
   - cfr\*bug_release_ratio
 
   **🛑 Note :- the target metrics should only contain the keys with the name exactly corresponding of the metrics' keys available in the `data.yaml`**
+
+- Once the target metrics file has been created, we can inject it into the usage mentioned [here]()
