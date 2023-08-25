@@ -81,8 +81,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
-          tag_name: ${{ steps.package-version.outputs.current-version}}-beta
-          release_name: v${{ steps.package-version.outputs.current-version}}-beta
+          tag_name: test-beta
+          release_name: test-beta
           body: ${{ env.COMMIT_MESSAGE }}
           draft: false
           prerelease: false
