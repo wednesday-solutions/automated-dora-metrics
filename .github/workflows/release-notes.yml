@@ -64,17 +64,17 @@ jobs:
             fi
             echo "COMMIT_MESSAGE=${msg}" >> $GITHUB_ENV
 
-      - name: Bump version and push tag
-        run: |
-          cd "$GITHUB_WORKSPACE"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config user.name "$GITHUB_ACTOR"
-          npm version minor
-          git push && git push --tags
+      # - name: Bump version and push tag
+      #   run: |
+      #     cd "$GITHUB_WORKSPACE"
+      #     git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      #     git config user.name "$GITHUB_ACTOR"
+      #     npm version minor
+      #     git push && git push --tags
 
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+      # - name: get-npm-version
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@master
 
       - name: Create Beta Release
         uses: actions/create-release@latest
