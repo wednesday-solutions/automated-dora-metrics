@@ -34,38 +34,49 @@ def identify_commits(existing_codebase=False, prev='dev', parent='main'):
         r'Merge pull request #(\d+) from .*\/(fix|bug|bugfix)\/.*')
     hotfix_pattern = re.compile(
         r'Merge pull request #(\d+) from .*\/hotfix\/.*')
-    merges_pattern = re.compile(r'Merge pull request #(\d+) from .*{prev}')
     hash_pattern = re.compile(r'\b[0-9a-fA-F]{7,40}\b')
 
-    if existing_codebase:
-        # we want all the merges that went in main
-        git_log_command = f"""git log --oneline --merges --first-parent {parent}"""
-    else:
-        git_log_command = 'git log --oneline --merges'
-        merges_pattern = re.compile(
-            fr'Merge pull request #(\d+) from .*{prev}')
+    # if existing_codebase:
+    # we want all the merges that went in main
+    git_log_command = f"""git log --oneline --merges --first-parent {parent}"""
+    # else:
+    #     git_log_command = 'git log --oneline --merges'
+    merges_pattern = re.compile(
+        fr'Merge pull request #(\d+) from .*{prev}')
 
     git_logs = subprocess.check_output(
         git_log_command, shell=True, text=True).splitlines()
 
     if (existing_codebase == False):
+        isHotfix = False
+
         for log in git_logs:
             if re.search(merges_pattern, log):
                 recent_commits.append(log)
-        if (len(recent_commits) > 1):
+
+        if (len(recent_commits) == 1):
+            if re.search(hotfix_pattern, recent_commits[0]):
+                recent_git_logs = recent_commits
+                isHotfix = True
+
+        if not isHotfix & len(recent_commits) == 1:
+            latest_log_hash = re.findall(hash_pattern, git_logs[0])[0]
+            second_last_log_hash = re.findall(hash_pattern, git_logs[1])[0]
+            recent_git_log_command = f"""git log --oneline --merges {second_last_log_hash}..{latest_log_hash}"""
+            recent_git_logs = subprocess.check_output(
+                recent_git_log_command, shell=True, text=True).splitlines()
+
+        if len(recent_commits) > 1:
             # release
             for log in recent_commits:
                 if re.search(hash_pattern, log):
                     hashes.append(re.findall(hash_pattern, log)[0])
             recent_git_log_command = f"""git log --oneline --merges {hashes[0]}...{hashes[1]}"""
-            # the diff between recent two merges may return hotfixes (if any went in between the release)
-            # further is the logic to handle this edge case, as hotfixes are standalone
-
+            # the diff between recent two merges, feat, bugfix, hotfixes (if any went in in between the release)
+            # further a check is added to handle this edge case, as hotfixes are standalone
             recent_git_logs = subprocess.check_output(
                 recent_git_log_command, shell=True, text=True).splitlines()
-        else:
-            # hotfix
-            recent_git_logs = recent_commits
+
     else:
         recent_git_logs = git_logs
 
