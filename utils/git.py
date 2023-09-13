@@ -37,7 +37,7 @@ def identify_commits(existing_codebase=False, prev='dev', parent='main'):
     hash_pattern = re.compile(r'\b[0-9a-fA-F]{7,40}\b')
 
     # if existing_codebase:
-    # we want all the merges that went in main
+    # we want all the merges that went in main or the parent
     git_log_command = f"""git log --oneline --merges --first-parent {parent}"""
     # else:
     #     git_log_command = 'git log --oneline --merges'
@@ -46,6 +46,8 @@ def identify_commits(existing_codebase=False, prev='dev', parent='main'):
 
     git_logs = subprocess.check_output(
         git_log_command, shell=True, text=True).splitlines()
+
+    print('merge_git_logs_from_parent', git_logs)
 
     if (existing_codebase == False):
         isHotfix = False
@@ -81,6 +83,7 @@ def identify_commits(existing_codebase=False, prev='dev', parent='main'):
         recent_git_logs = git_logs
 
     t_releases = len(recent_git_logs)
+    print("recent_git_logs", recent_git_logs)
 
     for log in recent_git_logs:
         if re.search(feature_pattern, log):
@@ -93,5 +96,9 @@ def identify_commits(existing_codebase=False, prev='dev', parent='main'):
     # edge case scenario :- hotfixes shouldn't be added as part of general release
     hotfixes = hotfix_messages if not (
         feature_messages or bug_messages) else []
+
+    print('features', feature_messages)
+    print('bugs', bug_messages)
+    print('hotfixes', hotfixes)
 
     return feature_messages, bug_messages, hotfixes, t_releases
