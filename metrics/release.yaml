@@ -35,3 +35,9 @@ releases:
     bugs: 0
     hotfixes: 0
     is_hotfix: false
+  - number: 7
+    date: 13-09-2023 10:44 AM
+    features: 1
+    bugs: 0
+    hotfixes: 0
+    is_hotfix: false
