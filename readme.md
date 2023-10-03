@@ -1,12 +1,12 @@
 <div>
   
   <p>
-    <h1 align="left">Automated Delivery Metrics
+    <h1 align="left">Automated DORA & Delivery Metrics
     </h1>
   </p>
 
   <p>
-A tool to provide the ability to generate automated metrics for your every releases.
+A tool to provide the ability to generate automated DORA and delivery metrics for your every release.
   </p>
 
 ---
@@ -18,7 +18,7 @@ A tool to provide the ability to generate automated metrics for your every relea
   </p>
 
   <div>
-    <a href="https://www.wednesday.is/contact-us?utm_source=gthb&utm_medium=repo&utm_campaign=serverless" target="_blank">
+    <a href="https://www.wednesday.is/contact-us?utm_source=gthb&utm_medium=repo&utm_campaign=automated-dora-metrics" target="_blank">
       <img src="https://uploads-ssl.webflow.com/5ee36ce1473112550f1e1739/5f6ae88b9005f9ed382fb2a5_button_get_in_touch.svg" width="121" height="34">
     </a>
     <a href="https://github.com/wednesday-solutions/" target="_blank">
@@ -32,7 +32,7 @@ A tool to provide the ability to generate automated metrics for your every relea
 
 ---
 
-- This repository demonstrates the power of automation in generating metrics for your software releases. By utilizing the provided scripts and tools
+- This repository demonstrates the power of automation in generating DORA and delivery metrics for your software releases. By utilizing the provided scripts and tools
 - You can streamline the process of calculating and recording metrics for your projects.
 - Once the metrics are generated, you can seamlessly push them to 📣 [Compass](https://www.atlassian.com/software/compass) to keep track 📝 of your custom metrics effortlessly by following our instructions.
 - We have hosted a docker image [here](https://hub.docker.com/repository/docker/abhimishraa/dorametrics/general)
@@ -89,7 +89,7 @@ docker run --rm \
     --notify-compass "metrics/data.yaml" "metrics/target-metrics.yaml"
 ```
 
-- For getting help from the metrics tool :-
+- For getting help from the metrics tool:-
 
 ```
 docker run --rm abhimishraa/dorametrics:latest --calculate-metrics --help
@@ -110,7 +110,7 @@ The structure should be similar to what we have [here](https://github.com/wednes
 ### 🛑 Creating a Pull request 🛑 :-
 
 - The branch name must correspond to the ticket number such as `<type-of-ticket>/<Proj>-<TickNumber>`
-- For example :-
+- For example:-
 
 ```
  `feat/<PROJ>-1`
