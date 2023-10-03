@@ -39,6 +39,17 @@ A tool to provide the ability to generate automated DORA and delivery metrics fo
 
 ---
 
+### Metrics Included
+
+Including this in your CI pipeline will automatically uncover detailed insights about your releases, and delivery efficiency. 
+The following metrics will be automatically calculated per release
+
+- total number of releases - feature, bugfix, and hotfix release breakdown
+- average features, bugs & hotfixes per release
+- Hotfixes per release
+- Bugs per feature
+- Bug release ratio
+
 ### Getting started
 
 - [Detailed usage guide](https://github.com/wednesday-solutions/automated-delivery-metrics/tree/main/guide/usage)
