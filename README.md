@@ -41,7 +41,7 @@ A tool to provide the ability to generate automated DORA and delivery metrics fo
 
 ### Metrics Included
 
-Including this in your CI pipeline will automatically uncover detailed insights about your releases, and delivery efficiency. 
+Including this in your CI pipeline will automatically uncover detailed insights about your releases, and delivery efficiency.
 The following metrics will be automatically calculated per release
 
 - total number of releases - feature, bugfix, and hotfix release breakdown
@@ -125,8 +125,8 @@ The structure should be similar to what we have [here](https://github.com/wednes
 
 ```
  `feat/<PROJ>-1`
- `chore/<PROJ>-6`
  `docs/<PROJ>-7`
+ `chore/<PROJ>-6`
  `bug/<PROJ>-2`
  `fix/<PROJ>-5`
  `bugfix/<PROJ>-2`
