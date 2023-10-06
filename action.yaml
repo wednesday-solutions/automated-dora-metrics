@@ -1,0 +1,16 @@
+name: "Automated Delivery Metrics Action"
+description: "Effortlessly record metrics for your software releases. Then, seamlessly push generated metrics to Compass"
+inputs:
+  command:
+    description: "The command to run (calculate-metrics, notify-compass)"
+    required: true
+  COMPASS_USER_EMAIL:
+    description: "COMPASS_USER_EMAIL environment variable"
+  COMPASS_USER_API_KEY:
+    description: "COMPASS_USER_API_KEY environment variable"
+  COMPASS_METRICS_BASE_URL:
+    description: "COMPASS_METRICS_BASE_URL environment variable"
+
+runs:
+  using: "docker"
+  image: "docker://abhimishraa/dorametrics:latest"
