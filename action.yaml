@@ -1,5 +1,5 @@
-name: "Automated Delivery Metrics Action"
-description: "Effortlessly record metrics for your software releases. Then, seamlessly push generated metrics to Compass"
+name: "Automated DORA Metrics"
+description: "Effortlessly record DORA metrics for your software releases and seamlessly push them to Compass by Atlassian"
 inputs:
   command:
     description: "The command to run (calculate-metrics, notify-compass)"
