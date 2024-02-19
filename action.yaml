@@ -1,5 +1,11 @@
 name: "Automated DORA Metrics"
+
 description: "Effortlessly record DORA metrics for your software releases and seamlessly push them to Compass by Atlassian"
+
+branding:
+  color: purple
+  icon: activity
+
 inputs:
   command:
     description: "The command to run (calculate-metrics, notify-compass)"
