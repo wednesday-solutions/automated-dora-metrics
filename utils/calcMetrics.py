@@ -1,15 +1,16 @@
 import os
 import yaml
 from utils.date import get_current_date
-from utils.math import calc_avg, calc_cfr_hotfix_to_release, calc_cfr_bugs_to_tasks_ratio, calc_cfr_bug_to_feature, calc_cfr_bug_release_ratio
+from utils.calc import calc_avg, calc_cfr_hotfix_to_release, calc_cfr_bugs_to_tasks_ratio, calc_cfr_bug_to_feature, calc_cfr_bug_release_ratio
 from utils.dir import create_directory_and_file
+from utils.leadTimeToChange import calcLeadTimeToChange
 
 current_date = get_current_date()
 
 # yields data.yaml
 
 
-def calculate_metrics(number_of_features, number_of_bugs, number_of_hotfixes, total_tickets, t_releases, existing_codebase=True, target_data_file='metrics/data.yaml', isHotFix="true", includesBugs="true"):
+def calculate_metrics(number_of_features, number_of_bugs, number_of_hotfixes, total_tickets, t_releases, existing_codebase=True, target_data_file='metrics/data.yaml', isHotFix="true", includesBugs="true", parent_branch='main'):
     if os.path.exists(target_data_file):
         print("Found existing target file, updating it with the latest release...")
 
@@ -62,6 +63,7 @@ def calculate_metrics(number_of_features, number_of_bugs, number_of_hotfixes, to
             average_hotfixes_per_release = calc_avg(
                 revised_total_hotfixes, current_release)
 
+            lead_time_to_chage = calcLeadTimeToChange(parent_branch)
             yaml_content = f"""
             .total_releases = {current_release} |
             .total_feature_releases = {revised_total_features} |
@@ -71,6 +73,7 @@ def calculate_metrics(number_of_features, number_of_bugs, number_of_hotfixes, to
             .average_features_per_release = {average_features_per_release} |
             .average_bugs_per_release = {average_bugs_per_release} |
             .average_hotfixes_per_release = {average_hotfixes_per_release} |
+            .lead_time_to_change = {lead_time_to_chage} |
             .cfr_hotfix_to_release = "{cfr_hotfix_to_release} %" |
             .cfr_bugs_to_tasks_ratio = "{cfr_bugs_to_tasks_ratio} %" |
             .cfr_bug_to_feature = "{cfr_bug_to_feature} %" |

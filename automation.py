@@ -44,7 +44,7 @@ if __name__ == "__main__":
         total_tickets=total_tickets,
         t_releases=t_releases,
         existing_codebase=existing_codebase,
-        target_data_file=target_data_file, isHotFix=isHotFix, includesBugs=includesBugs)
+        target_data_file=target_data_file, isHotFix=isHotFix, includesBugs=includesBugs, parent_branch=parent_branch)
     calculate_releases(
         number_of_features=number_of_features,
         number_of_bugs=number_of_bugs,
