@@ -1,17 +1,17 @@
-total_releases: 97
-total_feature_releases: 42
+total_releases: 98
+total_feature_releases: 43
 total_bugfix_releases: 19
 total_hotfix_releases: 21
-total_releases_without_bugs: 95
-average_features_per_release: 0.43
-average_bugs_per_release: 0.2
-average_hotfixes_per_release: 0.22
-cfr_hotfix_to_release: 21.65 %
-cfr_bugs_to_tasks_ratio: 7.0 %
-cfr_bug_to_feature: 20.6 %
-cfr_bug_release_ratio: 97.94 %
+total_releases_without_bugs: 96
+average_features_per_release: 0.44
+average_bugs_per_release: 0.19
+average_hotfixes_per_release: 0.21
+cfr_hotfix_to_release: 21.43 %
+cfr_bugs_to_tasks_ratio: 8.0 %
+cfr_bug_to_feature: 22.06 %
+cfr_bug_release_ratio: 97.96 %
 last_release:
-  date: 19-02-2024 10:47 AM
+  date: 10-07-2024 12:38 PM
   total_tickets: 1
   features: 1
   bugs: 0
